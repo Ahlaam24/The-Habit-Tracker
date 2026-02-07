@@ -4,7 +4,7 @@ A simple and intuitive web application to help you track your daily habits. Buil
 
 ## 🚀 Live Demo
 
-**[View Live Demo](https://Ahlaam24.github.io/The-Habit-Tracker/)**
+**[View Live Demo](https://github.com/Ahlaam24/The-Habit-Tracker.git)**
 
 Experience the application in action! The live demo is hosted on GitHub Pages.
 
