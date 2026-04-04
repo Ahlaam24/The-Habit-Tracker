@@ -1,26 +1,14 @@
 # The Habit Tracker
 
-A simple web app to track daily habits. Built with vanilla HTML, CSS, and JavaScript—no frameworks.
+## About this project
 
-## How to run it (recommended)
+**The Habit Tracker** is a small website for building routines: you sign in, add habits, check them off for today, and see your progress on a calendar. It is built with plain **HTML, CSS, and JavaScript**—no frameworks—and styled with a soft **dusty rose / blush** theme.
 
-**Yes, this is necessary** if the GitHub Pages link does not work or you are working from your own copy. Sign up / log in uses the **Web Crypto API**, which needs a **real website address** (`http://localhost` or `https://…`). If you only **double-click `index.html`**, the address bar shows `file://…` and **authentication usually will not work**.
+Each habit can sit in a **category** (like Fitness, Study, or Faith), you can **filter** the list by category, and set **which days of the week** a habit repeats. A **month calendar** shows how many habits you completed on each day; you can tap a date to see the list for that day.
 
-1. **Clone or download** this repository.
-2. In a terminal, **serve the project folder** over HTTP:
+**Accounts** are handled entirely in the browser: you register with email and password, passwords are hashed with **PBKDF2**, and your habits live in **localStorage** on your device—separate per account, not uploaded to a server.
 
-```bash
-cd The-Habit-Tracker
-python3 -m http.server 8080
-```
-
-3. Open **http://localhost:8080** in your browser, then sign up or log in and add habits.
-
-No Python? From the same folder you can use **`npx --yes serve -l 8080`** (needs Node.js), then open **http://localhost:8080**.
-
-## Live demo (GitHub Pages)
-
-**[Try the live demo](https://ahlaam24.github.io/The-Habit-Tracker/)** — only works if **GitHub Pages** is turned on for this repo (**Settings → Pages →** deploy from the `main` branch). If that link shows **404** or never loads, use the **local steps above**; they are the reliable way to use the app.
+The app is meant to be hosted like any **static site** (for example alongside this repo on GitHub). **Source / code:** [github.com/Ahlaam24/The-Habit-Tracker](https://github.com/Ahlaam24/The-Habit-Tracker)
 
 ## Features
 
@@ -66,7 +54,7 @@ No Python? From the same folder you can use **`npx --yes serve -l 8080`** (needs
 
 ## Browser support
 
-Works in current **Chrome**, **Firefox**, **Safari**, and **Edge** when served over **localhost** or **HTTPS**.
+Works in current **Chrome**, **Firefox**, **Safari**, and **Edge** when the site is served over **HTTPS** or **http://localhost** (not as a downloaded `file://` page).
 
 ## License
 
