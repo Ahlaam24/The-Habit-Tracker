@@ -54,14 +54,21 @@
             </header>
 
             <div class="add-habit-section">
-                <label class="sr-only" for="habitCategory">Category</label>
-                <select id="habitCategory" class="habit-category-input" aria-label="Category"></select>
-                <input
-                    type="text"
-                    id="habitInput"
-                    placeholder="Enter a habit (e.g., 'Drink water', 'Exercise')"
-                >
-                <button id="addButton">Add Habit</button>
+                <div class="add-habit-field">
+                    <label for="habitCategory">Category</label>
+                    <select id="habitCategory" class="habit-category-input"></select>
+                </div>
+                <div class="add-habit-field add-habit-field--grow">
+                    <label for="habitInput">Habit</label>
+                    <input
+                        type="text"
+                        id="habitInput"
+                        name="habit"
+                        autocomplete="off"
+                        placeholder="e.g. Drink water, Exercise"
+                    >
+                </div>
+                <button type="button" id="addButton" class="add-habit-submit">Add Habit</button>
             </div>
 
             <div id="categoryFilterBar" class="category-filter" role="group" aria-label="Filter by category"></div>

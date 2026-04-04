@@ -193,9 +193,30 @@ h1.app-title {
 .add-habit-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 10px 12px;
     margin-bottom: 16px;
-    align-items: stretch;
+    align-items: flex-end;
+}
+
+.add-habit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.add-habit-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.add-habit-field--grow {
+    flex: 1 1 200px;
+}
+
+.add-habit-submit {
+    flex-shrink: 0;
 }
 
 .habit-category-input {

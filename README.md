@@ -1,51 +1,70 @@
 # The Habit Tracker
 
-A simple and intuitive web application to help you track your daily habits. Built with vanilla HTML, CSS, and JavaScript.
+A simple web app to track daily habits. Built with vanilla HTML, CSS, and JavaScript—no frameworks.
 
-## 🚀 Live Demo
+## Live demo
 
-**[View Live Demo](https://ahlaam24.github.io/The-Habit-Tracker/)**
+**[View live demo](https://ahlaam24.github.io/The-Habit-Tracker/)** (GitHub Pages)
 
-Experience the application in action! The live demo is hosted on GitHub Pages.
+> **Note:** Sign up / log in uses the **Web Crypto API**, which requires a **secure context**. Use **`http://localhost`** or **HTTPS**. Opening `index.html` as a `file://` URL may not work for authentication.
 
 ## Features
 
-- ✅ **Add Habits**: Easily add new habits you want to track
-- ☑️ **Mark Complete**: Check off habits as you complete them
-- 🗑️ **Delete Habits**: Remove habits you no longer want to track
-- 💾 **Data Persistence**: All your habits are saved in your browser's localStorage
-- 📱 **Responsive Design**: Works on desktop, tablet, and mobile devices
+### Accounts and authentication
 
-## Getting Started
+- **Sign up** and **log in** with email and password (minimum 8 characters).
+- Passwords are hashed in the browser with **PBKDF2** (not stored in plain text).
+- Each account has **its own habits**—data is keyed by user in **localStorage** (stays on your device; not synced to a server).
 
-1. **Open the Application**
-   - Simply open `index.html` in your web browser
-   - No installation or setup required!
+### Habits
 
-2. **Add a Habit**
-   - Type a habit name in the input field (e.g., "Drink water", "Exercise")
-   - Click "Add Habit" or press Enter
+- **Add** habits with a **category** (Fitness, Study, Faith, Wellness, Home, Work, Social, General).
+- **Filter** the list by category or show **All**.
+- **Mark complete** for today and **delete** habits.
+- **Repeat schedule**: choose **every day** or specific weekdays (Sun–Sat).
+- **Calendar** month view: see how many habits you completed each day; tap a date for details.
 
-3. **Track Your Progress**
-   - Check the checkbox next to a habit when you complete it
-   - Delete habits you no longer want to track
+### Design and accessibility
 
-## Technologies Used
+- **Dusty rose / blush** theme (CSS custom properties).
+- **Visible labels** on the add-habit form (not placeholder-only).
+- Client-side **email format validation** on sign up / log in.
 
-- **HTML5**: Structure and semantic markup
-- **CSS3**: Modern styling with Flexbox
-- **JavaScript (Vanilla)**: All functionality without any frameworks
-- **LocalStorage API**: Client-side data persistence
+### Data and reliability
 
-## Browser Compatibility
+- Habits and completions persist in **localStorage** (per browser, per account).
+- **Corrupted** saved habit data is handled safely so the app still loads (empty list if parsing fails).
 
-Works on all modern browsers:
-- Chrome
-- Firefox
-- Safari
-- Edge
+## Getting started (local)
+
+1. Clone or download this repository.
+2. Serve the folder over HTTP (required for auth), for example:
+   ```bash
+   cd The-Habit-Tracker
+   python3 -m http.server 8080
+   ```
+3. Open **http://localhost:8080** in your browser.
+4. Create an account or log in, then add habits.
+
+## How to use
+
+1. **Sign up** with email and password, or **log in** if you already have an account.
+2. Choose a **category**, enter a **habit**, click **Add Habit** (or press Enter in the habit field).
+3. Use **category chips** to filter which habits you see.
+4. Check the box when you complete a habit **today** (only on days it is scheduled, if you use a custom repeat).
+5. Use **Schedule & calendar** below the list for repeats and history.
+6. **Log out** when you are done on a shared computer.
+
+## Technologies
+
+- **HTML5**, **CSS3** (Flexbox, Grid), **JavaScript** (ES modules not required).
+- **localStorage** for users, sessions, and habits.
+- **Web Crypto API** (`crypto.subtle`) for password hashing.
+
+## Browser support
+
+Works in current **Chrome**, **Firefox**, **Safari**, and **Edge** when served over **localhost** or **HTTPS**.
 
 ## License
 
-This project is open source and available for educational purposes.
-
+Open source for educational use.

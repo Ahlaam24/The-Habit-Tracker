@@ -188,6 +188,28 @@ function setAuthError(message) {
     authError.textContent = message;
 }
 
+function isValidEmail(email) {
+    const s = String(email).trim();
+    if (s.length === 0 || s.length > 254) return false;
+    const at = s.indexOf('@');
+    if (at <= 0 || at !== s.lastIndexOf('@')) return false;
+    const local = s.slice(0, at);
+    const domain = s.slice(at + 1);
+    if (local.length > 64 || domain.length === 0 || domain.length > 253) return false;
+    if (!domain.includes('.')) return false;
+    const dot = domain.lastIndexOf('.');
+    if (dot <= 0 || dot === domain.length - 1) return false;
+    const tld = domain.slice(dot + 1);
+    if (tld.length < 2 || !/^[a-zA-Z]+$/.test(tld)) return false;
+    const localOk = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+$/.test(local);
+    const domainPart = domain.slice(0, dot);
+    const domainOk =
+        /^[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?)*$/.test(
+            domainPart + '.' + tld
+        );
+    return localOk && domainOk;
+}
+
 function updateAuthModeUI() {
     if (isSignupMode) {
         authTitle.textContent = 'Create account';
@@ -213,8 +235,12 @@ toggleAuth.addEventListener('click', () => {
 authForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     setAuthError('');
-    const email = authEmail.value;
+    const email = authEmail.value.trim();
     const password = authPassword.value;
+    if (!isValidEmail(email)) {
+        setAuthError('Please enter a valid email address.');
+        return;
+    }
     if (password.length < 8) {
         setAuthError('Password must be at least 8 characters.');
         return;
@@ -545,8 +571,21 @@ function loadHabits() {
         return;
     }
     const saved = localStorage.getItem(habitsStorageKey(userId));
-    habits = saved ? JSON.parse(saved) : [];
-    migrateHabitsArray();
+    if (!saved) {
+        habits = [];
+        return;
+    }
+    try {
+        const parsed = JSON.parse(saved);
+        if (!Array.isArray(parsed)) {
+            habits = [];
+            return;
+        }
+        habits = parsed.filter((h) => h != null && typeof h === 'object');
+        migrateHabitsArray();
+    } catch {
+        habits = [];
+    }
 }
 
 function renderCalendar() {
