@@ -2,11 +2,25 @@
 
 A simple web app to track daily habits. Built with vanilla HTML, CSS, and JavaScript—no frameworks.
 
-## Live demo
+## How to run it (recommended)
 
-**[View live demo](https://ahlaam24.github.io/The-Habit-Tracker/)** (GitHub Pages)
+**Yes, this is necessary** if the GitHub Pages link does not work or you are working from your own copy. Sign up / log in uses the **Web Crypto API**, which needs a **real website address** (`http://localhost` or `https://…`). If you only **double-click `index.html`**, the address bar shows `file://…` and **authentication usually will not work**.
 
-> **Note:** Sign up / log in uses the **Web Crypto API**, which requires a **secure context**. Use **`http://localhost`** or **HTTPS**. Opening `index.html` as a `file://` URL may not work for authentication.
+1. **Clone or download** this repository.
+2. In a terminal, **serve the project folder** over HTTP:
+
+```bash
+cd The-Habit-Tracker
+python3 -m http.server 8080
+```
+
+3. Open **http://localhost:8080** in your browser, then sign up or log in and add habits.
+
+No Python? From the same folder you can use **`npx --yes serve -l 8080`** (needs Node.js), then open **http://localhost:8080**.
+
+## Live demo (GitHub Pages)
+
+**[Try the live demo](https://ahlaam24.github.io/The-Habit-Tracker/)** — only works if **GitHub Pages** is turned on for this repo (**Settings → Pages →** deploy from the `main` branch). If that link shows **404** or never loads, use the **local steps above**; they are the reliable way to use the app.
 
 ## Features
 
@@ -34,17 +48,6 @@ A simple web app to track daily habits. Built with vanilla HTML, CSS, and JavaSc
 
 - Habits and completions persist in **localStorage** (per browser, per account).
 - **Corrupted** saved habit data is handled safely so the app still loads (empty list if parsing fails).
-
-## Getting started (local)
-
-1. Clone or download this repository.
-2. Serve the folder over HTTP (required for auth), for example:
-   ```bash
-   cd The-Habit-Tracker
-   python3 -m http.server 8080
-   ```
-3. Open **http://localhost:8080** in your browser.
-4. Create an account or log in, then add habits.
 
 ## How to use
 
