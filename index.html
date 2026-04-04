@@ -8,25 +8,84 @@
 </head>
 <body>
     <div class="container">
-        <h1>The Habit Tracker</h1>
-        
-        <!-- Form to add new habits -->
-        <div class="add-habit-section">
-            <input 
-                type="text" 
-                id="habitInput" 
-                placeholder="Enter a habit (e.g., 'Drink water', 'Exercise')"
-            >
-            <button id="addButton">Add Habit</button>
-        </div>
+        <!-- Auth: sign up / log in -->
+        <section id="authView" class="auth-view" aria-labelledby="authTitle">
+            <h1 class="app-title">The Habit Tracker</h1>
+            <div class="auth-card">
+                <h2 id="authTitle">Log in</h2>
+                <form id="authForm" novalidate>
+                    <label class="sr-only" for="authEmail">Email</label>
+                    <input
+                        type="email"
+                        id="authEmail"
+                        name="email"
+                        placeholder="Email"
+                        required
+                        autocomplete="username"
+                    >
+                    <label class="sr-only" for="authPassword">Password</label>
+                    <input
+                        type="password"
+                        id="authPassword"
+                        name="password"
+                        placeholder="Password (min. 8 characters)"
+                        required
+                        minlength="8"
+                        autocomplete="current-password"
+                    >
+                    <button type="submit" id="authSubmit">Log in</button>
+                </form>
+                <p class="auth-toggle">
+                    <span id="authToggleText">Don’t have an account?</span>
+                    <button type="button" id="toggleAuth" class="link-button">Sign up</button>
+                </p>
+                <p id="authError" class="auth-error" role="alert" hidden></p>
+            </div>
+        </section>
 
-        <!-- List of habits -->
-        <div id="habitsList" class="habits-list">
-            <!-- Habits will be added here by JavaScript -->
-        </div>
+        <!-- Main app (shown when logged in) -->
+        <section id="appView" class="app-view hidden" aria-label="Your habits">
+            <header class="app-header">
+                <div>
+                    <h1 class="app-title">The Habit Tracker</h1>
+                    <p id="userGreeting" class="user-greeting"></p>
+                </div>
+                <button type="button" id="logoutButton" class="logout-button">Log out</button>
+            </header>
+
+            <div class="add-habit-section">
+                <label class="sr-only" for="habitCategory">Category</label>
+                <select id="habitCategory" class="habit-category-input" aria-label="Category"></select>
+                <input
+                    type="text"
+                    id="habitInput"
+                    placeholder="Enter a habit (e.g., 'Drink water', 'Exercise')"
+                >
+                <button id="addButton">Add Habit</button>
+            </div>
+
+            <div id="categoryFilterBar" class="category-filter" role="group" aria-label="Filter by category"></div>
+
+            <div id="habitsList" class="habits-list"></div>
+
+            <section class="calendar-section" aria-labelledby="calendarHeading">
+                <h2 id="calendarHeading" class="section-heading">Schedule &amp; calendar</h2>
+                <p class="calendar-hint">Set which days each habit repeats. Tap a date to see what you completed.</p>
+                <div class="calendar-toolbar">
+                    <button type="button" id="calPrev" class="cal-nav-btn" aria-label="Previous month">‹</button>
+                    <span id="calMonthLabel" class="cal-month-label"></span>
+                    <button type="button" id="calNext" class="cal-nav-btn" aria-label="Next month">›</button>
+                    <button type="button" id="calToday" class="cal-today-btn">This month</button>
+                </div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                </div>
+                <div id="calendarGrid" class="calendar-grid"></div>
+                <div id="selectedDayPanel" class="selected-day-panel" hidden></div>
+            </section>
+        </section>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
-
