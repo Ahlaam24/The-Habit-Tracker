@@ -8,7 +8,11 @@ Each habit can sit in a **category** (like Fitness, Study, or Faith), you can **
 
 **Accounts** are handled entirely in the browser: you register with email and password, passwords are hashed with **PBKDF2**, and your habits live in **localStorage** on your device—separate per account, not uploaded to a server.
 
-The app is meant to be hosted like any **static site** (for example alongside this repo on GitHub). **Source / code:** [github.com/Ahlaam24/The-Habit-Tracker](https://github.com/Ahlaam24/The-Habit-Tracker)
+## 🚀 Live Demo
+
+**[View Live Demo](https://ahlaam24.github.io/The-Habit-Tracker/)**
+
+Experience the application in action! The live demo is hosted on GitHub Pages.
 
 ## Features
 
